@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <h2>VIEW WORKOUT</h2>
+  </div>
 </template>
 
 <script>

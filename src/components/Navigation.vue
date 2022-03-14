@@ -8,7 +8,7 @@
       <ul class="flex justify-end flex-1 gap-x-10">
         <router-link class="cursor-pointer" :to="{ name: 'Home' }">Home</router-link>
         <router-link class="cursor-pointer" :to="{ name: 'Home' }">Create</router-link>
-        <router-link class="cursor-pointer" :to="{ name: 'Home' }">Login</router-link>
+        <router-link class="cursor-pointer" :to="{ name: 'Login' }">Login</router-link>
         <li class="cursor-pointer">Logout</li>
       </ul>
     </nav>
