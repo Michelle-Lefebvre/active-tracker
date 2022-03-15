@@ -230,7 +230,7 @@ export default {
           },
         ]);
         if (error) throw error;
-        statusMsg.value = "Succes: Workout Created!";
+        statusMsg.value = "Success: Workout Created!";
         workoutName.value = null;
         workoutType.value = "select-workout";
         exercises.value = [];
