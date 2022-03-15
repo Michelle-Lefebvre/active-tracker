@@ -167,6 +167,7 @@
 
 <script>
 import { ref } from 'vue'
+import { uid } from 'uid'
 
 export default {
   name: "create",
@@ -179,14 +180,47 @@ export default {
     const errorMsg = ref(null)
 
     // Add exercise
+    const addExercise = () => {
+      if (workoutType.value === 'strength') {
+        exercises.value.push({
+          id: uid(), // creates unique id
+          exercise: '',
+          sets: '',
+          reps: '',
+          weight: '',
+        })
+        return
+      }
+      exercises.value.push({
+        id: uid(),
+        cardioType: '',
+        distance: '',
+        duration: '',
+        pace: '',
+      })
+    }
 
     // Delete exercise
+    const deleteExercise = (id) => {
+      if (exercises.value.length > 1) {
+        exercises.value = exercises.value.filter((exercise) => exercise.id !== id)
+        return
+      }
+      errorMsg.value = 'Error: Cannot remove, need to have at least one exercise'
+      setTimeout(() => {
+        errorMsg.value = false
+      }, 5000)
+    }
 
     // Listens for chaging of workout type input
+    const workoutChange = () => {
+      exercises.value = []
+      addExercise()
+    }
 
     // Create workout
 
-    return { workoutName, workoutType, exercises, statusMsg, errorMsg };
+    return { workoutName, workoutType, exercises, statusMsg, errorMsg, addExercise, workoutChange, deleteExercise };
   },
 };
 </script>
