@@ -9,27 +9,42 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      title: 'Home' // displays in browser tab
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      title: 'Login'
+    }
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
+    meta: {
+      title: 'Register'
+    }
   },
   {
     path: '/create',
     name: 'Create',
-    component: Create
+    component: Create,
+    meta: {
+      title: 'Create'
+    }
   },
   {
     path: '/view-workout/:workoutId',
     name: 'View-Workout',
-    component: ViewWorkout
+    component: ViewWorkout,
+    meta: {
+      title: 'Workouts'
+    }
   }
 ];
 
@@ -39,6 +54,10 @@ const router = createRouter({
 });
 
 // Change document titles
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | Active Tracker`;
+  next();
+});
 
 // Route guard for auth routes
 
